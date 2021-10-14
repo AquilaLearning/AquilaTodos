@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "node",
+            "name": "vscode-jest-tests",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            "cwd": "/mnt/c/code/AquilaTodos/app",
+            "runtimeExecutable": "npm",
+            "args": [
+                "run",
+                "test:unit",
+                "--",
+                "--runInBand",
+                "--watchAll=false"
+            ]
+        }
+    ]
+}
