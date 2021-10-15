@@ -46,7 +46,7 @@ export class TodoList extends Vue {
                         class="flex-grow-1 mr-3 w-auto"
                     />
                     <BButton type="submit">
-        Add
+                        Add
                         <b-icon icon="plus" />
                     </BButton>
                 </BForm>

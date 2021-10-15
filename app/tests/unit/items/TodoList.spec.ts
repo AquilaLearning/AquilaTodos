@@ -56,7 +56,8 @@ describe("TodoLists.vue", () => {
             {
                 propsData: {
                     listId: 1
-                }
+                },
+                stubs: ["router-link"]
             });
 
         await flushPromises();

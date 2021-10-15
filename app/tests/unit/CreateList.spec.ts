@@ -30,7 +30,7 @@ describe("CreateList.vue", () => {
         const wrapper = mount(
             CreateList,
             {
-                attachToDocument: true,
+                attachTo: document.body,
                 stubs: ["router-link"]
             });
 
