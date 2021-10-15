@@ -7,7 +7,7 @@
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "disableOptimisticBPs": true,
-            "cwd": "/mnt/c/code/AquilaTodos/app",
+            "cwd": "${workspaceRoot}/app",
             "runtimeExecutable": "npm",
             "args": [
                 "run",
