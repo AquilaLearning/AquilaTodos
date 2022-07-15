@@ -3,7 +3,7 @@
   "extends": [
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",
-      "plugin:import/errors",
+      "plugin:import/warns",
       "plugin:import/warnings",
       "plugin:vue/recommended",
       "plugin:jest/recommended"
@@ -27,15 +27,15 @@
       }
   },
   "rules": {
-      "@typescript-eslint/adjacent-overload-signatures": "error",
+      "@typescript-eslint/adjacent-overload-signatures": "warn",
       "@typescript-eslint/array-type": [
-          "error",
+          "warn",
           {
               "default": "array"
           }
       ],
       "@typescript-eslint/ban-types": [
-          "error",
+          "warn",
           {
               "types": {
                   "Boolean": "Avoid using the `Boolean` type. Did you mean `boolean`?",
@@ -48,21 +48,21 @@
           }
       ],
       "@typescript-eslint/consistent-type-assertions": [
-          "error",
+          "warn",
           {
               "assertionStyle": "as",
               "objectLiteralTypeAssertions": "never"
           }
       ],
       "@typescript-eslint/consistent-type-imports": [
-          "error",
+          "warn",
           {
               "prefer": "type-imports"
           }
       ],
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/explicit-member-accessibility": [
-          "error",
+          "warn",
           {
               "accessibility": "explicit",
               "overrides": {
@@ -75,14 +75,14 @@
           }
       ],
       "@typescript-eslint/indent": [
-          "error",
+          "warn",
           4,
           {
               "SwitchCase": 1
           }
       ],
       "@typescript-eslint/member-delimiter-style": [
-          "error",
+          "warn",
           {
               "multiline": {
                   "delimiter": "semi",
@@ -103,7 +103,7 @@
           }
       ],
       "@typescript-eslint/member-ordering": [
-          "error",
+          "warn",
           {
               "default": [
                   "public-instance-method",
@@ -114,19 +114,19 @@
       "@typescript-eslint/no-empty-interface": "off",
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-inferrable-types": "off",
-      "@typescript-eslint/no-misused-new": "error",
-      "@typescript-eslint/no-namespace": "error",
+      "@typescript-eslint/no-misused-new": "warn",
+      "@typescript-eslint/no-namespace": "warn",
       "@typescript-eslint/no-object-literal-type-assertion": "off",
-      "@typescript-eslint/no-parameter-properties": "error",
-      "@typescript-eslint/no-unused-expressions": "error",
+      "@typescript-eslint/no-parameter-properties": "warn",
+      "@typescript-eslint/no-unused-expressions": "warn",
       "@typescript-eslint/no-use-before-define": "off",
-      "@typescript-eslint/no-var-requires": "error",
-      "@typescript-eslint/prefer-for-of": "error",
-      "@typescript-eslint/prefer-function-type": "error",
+      "@typescript-eslint/no-var-requires": "warn",
+      "@typescript-eslint/prefer-for-of": "warn",
+      "@typescript-eslint/prefer-function-type": "warn",
       "@typescript-eslint/prefer-interface": "off",
-      "@typescript-eslint/triple-slash-reference": "error",
+      "@typescript-eslint/triple-slash-reference": "warn",
       "@typescript-eslint/type-annotation-spacing": [
-          "error",
+          "warn",
           {
               "after": true,
               "before": false,
@@ -138,24 +138,24 @@
               }
           }
       ],
-      "@typescript-eslint/unified-signatures": "error",
+      "@typescript-eslint/unified-signatures": "warn",
       "arrow-parens": "off",
-      "arrow-spacing": "error",
+      "arrow-spacing": "warn",
       "comma-dangle": "off",
       "complexity": "off",
-      "constructor-super": "error",
-      "curly": "error",
-      "dot-notation": "error",
-      "eol-last": "error",
+      "constructor-super": "warn",
+      "curly": "warn",
+      "dot-notation": "warn",
+      "eol-last": "warn",
       "import/named": "off",
       "import/namespace": "off",
       "import/no-default-export": "off",
       "import/no-duplicates": "off",
       "import/no-internal-modules": "off",
       "import/no-unresolved": "off",
-      "import/no-self-import": "error",
+      "import/no-self-import": "warn",
       "import/order": [
-          "error",
+          "warn",
           {
               "newlines-between": "always",
               "pathGroups": [
@@ -168,7 +168,7 @@
               "pathGroupsExcludedImportTypes": ["builtin"]
           }
       ],
-      "jest/expect-expect": "error",
+      "jest/expect-expect": "warn",
       "jsdoc/check-alignment": 1,
       "jsdoc/check-examples": 1,
       "jsdoc/check-indentation": 1,
@@ -181,7 +181,7 @@
       "jsdoc/require-returns-type": 1,
       "jsdoc/valid-types": 1,
       "key-spacing": [
-          "error",
+          "warn",
           {
               "afterColon": true,
               "beforeColon": false,
@@ -189,58 +189,58 @@
           }
       ],
       "keyword-spacing": [
-          "error",
+          "warn",
           {
               "before": true
           }
       ],
       "max-classes-per-file": [
-          "error",
+          "warn",
           1
       ],
-      "max-lines": ["error", 500],
-      "new-parens": "error",
-      "no-bitwise": "error",
-      "no-caller": "error",
+      "max-lines": ["warn", 500],
+      "new-parens": "warn",
+      "no-bitwise": "warn",
+      "no-caller": "warn",
       "no-case-declarations": "off",
-      "no-cond-assign": "error",
-      "no-debugger": "error",
+      "no-cond-assign": "warn",
+      "no-debugger": "warn",
       "no-dupe-class-members": "off",
-      "no-empty": "error",
-      "no-eval": "error",
+      "no-empty": "warn",
+      "no-eval": "warn",
       "no-fallthrough": "off",
       "no-invalid-this": "off",
-      "no-labels": "error",
+      "no-labels": "warn",
       "no-multiple-empty-lines": [
-          "error",
+          "warn",
           {
               "max": 1,
               "maxEOF": 1,
               "maxBOF": 0
           }
       ],
-      "no-new-wrappers": "error",
+      "no-new-wrappers": "warn",
       "no-parameter-properties": "off",
-      "@typescript-eslint/no-redeclare": "error",
-      "no-return-await": "error",
+      "@typescript-eslint/no-redeclare": "warn",
+      "no-return-await": "warn",
       "no-require-imports": "off",
       "no-shadow": "off",
-      "@typescript-eslint/no-shadow": ["error"],
-      "no-throw-literal": "error",
-      "no-trailing-spaces": "error",
-      "no-undef-init": "error",
+      "@typescript-eslint/no-shadow": ["warn"],
+      "no-throw-literal": "warn",
+      "no-trailing-spaces": "warn",
+      "no-undef-init": "warn",
       "no-unexpected-multiline": "off",
-      "no-unsafe-finally": "error",
-      "no-unused-labels": "error",
+      "no-unsafe-finally": "warn",
+      "no-unused-labels": "warn",
       "no-use-before-define": "off",
-      "no-var": "error",
+      "no-var": "warn",
       "object-curly-spacing": [
-          "error",
+          "warn",
           "always"
       ],
-      "object-shorthand": "error",
+      "object-shorthand": "warn",
       "one-var": [
-          "error",
+          "warn",
           {
               "const": "never",
               "let": "never",
@@ -248,33 +248,33 @@
           }
       ],
       "prefer-arrow-callback": [
-          "error",
+          "warn",
           {
               "allowNamedFunctions": true
           }
       ],
-      "prefer-const": "error",
+      "prefer-const": "warn",
       "quote-props": [
-          "error",
+          "warn",
           "consistent-as-needed"
       ],
       "quotes": [
-          "error",
+          "warn",
           "double",
           {
               "avoidEscape": true
           }
       ],
-      "radix": "error",
+      "radix": "warn",
       "semi": [
-          "error",
+          "warn",
           "always"
       ],
       "sort-imports": "off",
       "sort-keys": "off",
-      "space-before-blocks": "error",
+      "space-before-blocks": "warn",
       "space-before-function-paren": [
-          "error",
+          "warn",
           {
               "anonymous": "never",
               "asyncArrow": "always",
@@ -285,8 +285,8 @@
           2,
           "always"
       ],
-      "use-isnan": "error",
-      "vue/html-indent": ["error", 4],
+      "use-isnan": "warn",
+      "vue/html-indent": ["warn", 4],
 
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": [
@@ -296,19 +296,19 @@
           }
       ],
       "max-len": [
-          "error",
+          "warn",
           {
               "code": 160,
               "tabWidth": 4
           }
       ],
-      "no-console": "error",
-      "guard-for-in": "error",
-      "default-case": "error",
+      "no-console": "warn",
+      "guard-for-in": "warn",
+      "default-case": "warn",
       "no-prototype-builtins": "warn",
 
       // lowering these to warnings for now
-      // we should fix these and tighten to errors
+      // we should fix these and tighten to warns
       "eqeqeq": [
           "warn",
           "always",
