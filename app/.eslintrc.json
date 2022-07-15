@@ -3,7 +3,7 @@
   "extends": [
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",
-      "plugin:import/warns",
+      "plugin:import/errors",
       "plugin:import/warnings",
       "plugin:vue/recommended",
       "plugin:jest/recommended"
