@@ -28,9 +28,9 @@
                 this.context = context;
             }
 
-            public Task<List<TodoItemDto>> Handle(Request request, CancellationToken cancellationToken)
+            public async Task<List<TodoItemDto>> Handle(Request request, CancellationToken cancellationToken)
             {
-                return this.context.Items                             
+                var result = await this.context.Items                             
                     .Select(
                         i => new TodoItemDto
                         {
@@ -39,6 +39,8 @@
                             Complete = i.Complete
                         })
                     .ToListAsync(cancellationToken);
+
+                return result;
             }
         }
     }
