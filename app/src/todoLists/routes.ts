@@ -1,10 +1,10 @@
-import type { RouteConfig } from "vue-router";
+import type { RouteRecordRaw } from "vue-router";
 
 import CreateList from "./CreateList.vue";
 import TodoLists from "./TodoLists.vue";
-import { TodoList } from "./items/TodoList";
+import TodoList from "./items/TodoList.vue";
 
-export const todoListRoutes: RouteConfig[] = [
+export const todoListRoutes: RouteRecordRaw[] = [
     {
         path: "/",
         name: "Home",

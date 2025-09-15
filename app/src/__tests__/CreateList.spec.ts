@@ -1,20 +1,16 @@
-import { mount } from "@vue/test-utils";
+import { flushPromises, mount } from "@vue/test-utils";
 import type { AxiosStatic } from "axios";
 import axios from "axios";
-import flushPromises from "flush-promises";
+import { describe, expect, it, vi, type Mocked } from "vitest";
 
 import CreateList from "@/todoLists/CreateList.vue";
 
-jest.mock("axios");
-const mockedAxios = axios as jest.Mocked<AxiosStatic>;
+vi.mock("axios");
+const mockedAxios = axios as Mocked<AxiosStatic>;
 
 describe("CreateList.vue", () => {
     it("should render create list form", () => {
-        const wrapper = mount(
-            CreateList,
-            {
-                stubs: ["router-link"]
-            });
+        const wrapper = mount(CreateList);
 
         const header = wrapper.find("h2");
         expect(header.text()).toBe("Create List");
@@ -30,8 +26,7 @@ describe("CreateList.vue", () => {
         const wrapper = mount(
             CreateList,
             {
-                attachTo: document.body,
-                stubs: ["router-link"]
+                attachTo: document.body
             });
 
         const input = wrapper.find("#name-input");

@@ -1,41 +1,39 @@
+<script lang="ts" setup>
+import { onMounted, ref } from "vue";
+import axios from "axios";
+import Button from "primevue/button";
+import type { TodoListDto } from "./TodoListDto";
+
+const lists = ref<TodoListDto[]>([]);
+
+onMounted(async () => {
+    const response = await axios.get<TodoListDto[]>("api/todolist");
+    lists.value = response.data;
+});
+
+</script>
 <template>
     <div>
-        <b-button
+        <Button
             :to="{ name: 'CreateList' }"
             class="float-right"
         >
             Create
             <b-icon icon="plus" />
-        </b-button>
+        </Button>
 
         <h2>My Todo Lists</h2>
 
-        <b-list-group>
-            <b-list-group-item
+        <ul>
+            <li
                 v-for="list in lists"
                 :key="list.id"
-                :to="{ name: 'TodoList', params: { listId: list.id } }"
+                class="list-group-item"
             >
-                {{ list.name }}
-            </b-list-group-item>
-        </b-list-group>
+                <router-link :to="{ name: 'TodoList', params: { listId: list.id } }">
+                    {{ list.name }}
+                </router-link>
+        </li>
+        </ul>
     </div>
 </template>
-
-<script lang="ts">
-import axios from "axios";
-import { Component, Vue } from "vue-property-decorator";
-
-import type { TodoListDto } from "./TodoListDto";
-
-@Component
-export default class TodoLists extends Vue {
-
-    public lists: TodoListDto[] = [];
-
-    public async created(): Promise<void> {
-        const response = await axios.get<TodoListDto[]>("api/todolist");
-        this.lists = response.data;
-    }
-}
-</script>

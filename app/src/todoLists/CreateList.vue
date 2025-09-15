@@ -1,3 +1,39 @@
+<script lang="ts" setup>
+import axios from "axios";
+import { useToast } from "primevue";
+import { Form } from '@primevue/forms';
+import Button from "primevue/button";
+import InputText from "primevue/inputtext";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const toast = useToast();
+
+const model = ref({ name: "" });
+const saving = ref(false);
+
+const onSubmit = async (): Promise<void> => {
+
+        saving.value = true;
+
+        try {
+            await axios.post("/api/todolist", model.value);
+            router.push({ name: "Home" });
+        } catch (e) {
+
+            toast.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: `${e}`,
+                life: 3000
+            });
+        } finally {
+            saving.value = false;
+        }
+    };
+</script>
+
 <template>
     <div>
         <router-link
@@ -9,66 +45,23 @@
 
         <h2>Create List</h2>
 
-        <b-form
-            class="text-left"
-            @submit.prevent="onSubmit"
+        <Form
+            @submit="onSubmit"
         >
-            <b-form-group
-                label="Name"
-                label-for="name-input"
-            >
-                <b-form-input
-                    id="name-input"
-                    v-model="model.name"
-                    :disabled="saving"
-                />
-            </b-form-group>
 
-            <div class="text-right">
-                <b-button
-                    id="submit-button"
-                    type="submit"
-                    variant="primary"
-                    :disabled="saving"
-                >
-                    Submit
-                </b-button>
-            </div>
-        </b-form>
+        <label for="name-input">Name</label>
+        <InputText
+            id="name-input"
+            name="name"
+        />
+
+        <Button
+            id="submit-button"
+            type="submit"
+            label="Submit"
+            :disabled="saving"
+        />
+
+        </Form>
     </div>
 </template>
-
-<script lang="ts">
-import axios from "axios";
-import { Component, Vue } from "vue-property-decorator";
-
-@Component
-export default class CreateList extends Vue {
-
-    public model = {
-        name: ""
-    };
-
-    public saving = false;
-
-    public async onSubmit(): Promise<void> {
-
-        this.saving = true;
-
-        try {
-            await axios.post("/api/todolist", this.model);
-            this.$router.push({ name: "Home" });
-        } catch (e) {
-            this.$bvToast.toast(
-                `${e}`,
-                {
-                    title: "Error!",
-                    variant: "danger"
-                }
-            );
-        } finally {
-            this.saving = false;
-        }
-    }
-}
-</script>

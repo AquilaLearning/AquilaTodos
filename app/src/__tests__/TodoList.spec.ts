@@ -1,14 +1,14 @@
-import { mount } from "@vue/test-utils";
+import { flushPromises, mount } from "@vue/test-utils";
 import type { AxiosStatic } from "axios";
 import axios from "axios";
-import flushPromises from "flush-promises";
 
-import { TodoList } from "@/todoLists/items/TodoList";
+import TodoList from "@/todoLists/items/TodoList.vue";
 import type { TodoListDto } from "@/todoLists/TodoListDto";
 import type { TodoItemDto } from "@/todoLists/items/TodoItemDto";
+import { beforeEach, describe, expect, it, vi, type Mocked } from "vitest";
 
-jest.mock("axios");
-const mockedAxios = axios as jest.Mocked<AxiosStatic>;
+vi.mock("axios");
+const mockedAxios = axios as Mocked<AxiosStatic>;
 
 describe("TodoLists.vue", () => {
 
@@ -55,7 +55,7 @@ describe("TodoLists.vue", () => {
             TodoList,
             {
                 propsData: {
-                    listId: 1
+                    listId: "1"
                 },
                 stubs: ["router-link"]
             });
@@ -67,8 +67,8 @@ describe("TodoLists.vue", () => {
 
         const lists = wrapper.findAll(".list-group-item");
         expect(lists.length).toBe(3);
-        expect(lists.at(0).text()).toBe("Item 1");
-        expect(lists.at(1).text()).toBe("Item 2");
-        expect(lists.at(2).text()).toBe("Item 3");
+        expect(lists.at(0)?.text()).toBe("Item 1");
+        expect(lists.at(1)?.text()).toBe("Item 2");
+        expect(lists.at(2)?.text()).toBe("Item 3");
     });
 });

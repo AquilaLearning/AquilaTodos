@@ -1,5 +1,9 @@
+<script lang="ts" setup>
+import Toast from 'primevue/toast';
+</script>
 <template>
     <div id="app">
+        <Toast />
         <div id="nav">
             <!-- <router-link to="/">
                 Home
