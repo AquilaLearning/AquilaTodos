@@ -12,7 +12,6 @@
             response.EnsureSuccessStatusCode();
             return await response.ReadAsObjectAsync<T>();
         }
-
     }
 
     public static class HttpResponseMessageExtensions

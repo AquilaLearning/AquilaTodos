@@ -30,7 +30,7 @@
 
             public async Task<List<TodoItemDto>> Handle(Request request, CancellationToken cancellationToken)
             {
-                var result = await this.context.Items                             
+                var result = await this.context.Items
                     .Select(
                         i => new TodoItemDto
                         {

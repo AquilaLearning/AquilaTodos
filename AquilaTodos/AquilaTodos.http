@@ -1,0 +1,13 @@
+@AquilaTodos_HostAddress = https://localhost:7044
+@ListId = 1
+
+GET {{AquilaTodos_HostAddress}}/api/TodoList
+Accept: application/json
+
+###
+
+
+GET {{AquilaTodos_HostAddress}}/api/TodoList/{{ListId}}/Item
+Accept: application/json
+
+###

@@ -10,7 +10,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
-    public abstract class TestApplicationFactory : WebApplicationFactory<Startup>
+    public abstract class TestApplicationFactory : WebApplicationFactory<Program>
     {
         public TestServer TestServer { get; set; }
 

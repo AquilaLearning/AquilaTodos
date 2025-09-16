@@ -1,22 +1,39 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using System.Reflection;
+using AquilaTodos;
+using Microsoft.EntityFrameworkCore;
 
-namespace AquilaTodos
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+var folder = Environment.SpecialFolder.LocalApplicationData;
+var path = Environment.GetFolderPath(folder);
+var dbPath = $"{path}{Path.DirectorySeparatorChar}aquilatodos.db";
+
+builder.Services.AddDbContext<TodoContext>(options => options.UseSqlite($"DataSource={dbPath}"));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+// Add services to the container.
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+DataSeeder.Seed(app.Services);
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var host = CreateHostBuilder(args).Build();
-            DataSeeder.Seed(host);
-            host.Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
+
+app.MapDefaultControllerRoute();
+app.MapControllers();
+
+app.Run();
+
+public partial class Program { }

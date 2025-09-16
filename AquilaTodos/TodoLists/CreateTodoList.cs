@@ -2,8 +2,8 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using AquilaTodos.Model;
     using MediatR;
+    using Model;
 
     public static class CreateTodoList
     {
@@ -25,7 +25,7 @@
                 this.context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task Handle(Command request, CancellationToken cancellationToken)
             {
                 var todoList = new TodoList
                 {
@@ -34,8 +34,6 @@
 
                 await this.context.Lists.AddAsync(todoList, cancellationToken);
                 await this.context.SaveChangesAsync(cancellationToken);
-
-                return Unit.Value;
             }
         }
     }

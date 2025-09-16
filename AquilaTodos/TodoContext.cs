@@ -1,7 +1,7 @@
 ﻿namespace AquilaTodos
 {
-    using AquilaTodos.Model;
     using Microsoft.EntityFrameworkCore;
+    using Model;
 
     public class TodoContext : DbContext
     {

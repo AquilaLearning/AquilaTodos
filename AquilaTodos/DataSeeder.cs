@@ -1,26 +1,27 @@
 ﻿namespace AquilaTodos
 {
     using System.Linq;
-    using AquilaTodos.Model;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
+    using Model;
 
     public static class DataSeeder
     {
-        public static void Seed(IHost host)
+        public static void Seed(IServiceProvider serviceProvider)
         {
-            using (var scope = host.Services.GetService<IServiceScopeFactory>().CreateScope())
+            using var scope = serviceProvider.CreateScope();
+            var context = scope.ServiceProvider.GetRequiredService<TodoContext>();
+            if (context.Database.IsRelational())
             {
-                using (var context = scope.ServiceProvider.GetRequiredService<TodoContext>())
-                {
-                    context.Database.OpenConnection();
-                    context.Database.EnsureCreated();
-                    context.Database.Migrate();
-                    SeedTodos(context);
-                }
+                context.Database.Migrate();
+            }
+
+            if (context.Lists.Any() == false)
+            {
+                SeedTodos(context);
             }
         }
+
 
         private static void SeedTodos(TodoContext context)
         {

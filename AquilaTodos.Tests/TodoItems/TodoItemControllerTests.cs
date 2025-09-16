@@ -1,9 +1,9 @@
 ﻿namespace AquilaTodos.Tests.TodoItems
 {
     using System.Collections.Generic;
-    using System.Net.Http;
+    using System.Net.Http.Json;
     using System.Threading.Tasks;
-    using AquilaTodos.Model;
+    using Model;
     using AquilaTodos.TodoItems;
     using Shouldly;
     using Xunit;

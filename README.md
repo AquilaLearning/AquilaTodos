@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- .NET Core SDK 3.1 - https://dotnet.microsoft.com/download/dotnet/3.1
+- .NET Core 8.0 - https://dotnet.microsoft.com/download/dotnet/8.0
 - Node.js - https://nodejs.org/en/
 - An appropriate IDE (e.g. VS Code)
 

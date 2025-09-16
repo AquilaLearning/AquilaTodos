@@ -2,9 +2,9 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using AquilaTodos.Model;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
+    using Model;
 
     public static class CreateTodoItem
     {
@@ -30,7 +30,7 @@
                 this.context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task Handle(Command request, CancellationToken cancellationToken)
             {
                 var list = await this.context.Lists
                     .Include(l => l.Items)
@@ -43,7 +43,6 @@
                 });
 
                 await this.context.SaveChangesAsync(cancellationToken);
-                return Unit.Value;
             }
         }
     }
