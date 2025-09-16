@@ -9,9 +9,9 @@ import Toast from 'primevue/toast';
                 Home
             </router-link> -->
         </div>
-        <b-container>
+        <div>
             <router-view />
-        </b-container>
+        </div>
     </div>
 </template>
 

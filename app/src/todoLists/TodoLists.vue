@@ -14,12 +14,10 @@ onMounted(async () => {
 </script>
 <template>
     <div>
-        <Button
-            :to="{ name: 'CreateList' }"
-            class="float-right"
-        >
-            Create
-            <b-icon icon="plus" />
+        <Button asChild>
+            <router-link :to="{ name: 'CreateList' }">
+                Create +
+            </router-link>
         </Button>
 
         <h2>My Todo Lists</h2>

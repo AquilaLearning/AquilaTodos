@@ -83,9 +83,14 @@ onMounted(() => {
                 :key="item.id"
                 class="list-group-item"
             >
-                <Checkbox v-model="item.complete" />
+                <Checkbox v-model="item.complete" binary />
                 {{ item.label }}
             </li>
         </ul>
     </div>
 </template>
+<style lang="css" scoped>
+.list-group-item {
+    list-style: none;
+}
+</style>

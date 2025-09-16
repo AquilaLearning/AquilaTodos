@@ -51,6 +51,7 @@ const onSubmit = async (): Promise<void> => {
 
         <label for="name-input">Name</label>
         <InputText
+            v-model="model.name"
             id="name-input"
             name="name"
         />
