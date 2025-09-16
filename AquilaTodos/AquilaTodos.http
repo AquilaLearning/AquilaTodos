@@ -1,5 +1,6 @@
 @AquilaTodos_HostAddress = https://localhost:7044
 @ListId = 1
+@city = London
 
 GET {{AquilaTodos_HostAddress}}/api/TodoList
 Accept: application/json
@@ -11,3 +12,6 @@ GET {{AquilaTodos_HostAddress}}/api/TodoList/{{ListId}}/Item
 Accept: application/json
 
 ###
+
+GET {{AquilaTodos_HostAddress}}/api/Weather/{{city}}
+Accept: application/json
