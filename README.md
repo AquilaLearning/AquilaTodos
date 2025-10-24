@@ -17,8 +17,8 @@
 
 - In another console navigate to the /app sub-directory
 - Install dependencies `npm install`
-- Run the app `npm run serve`
-- App should be accessible at http://localhost:8080/
+- Run the app `npm run dev`
+- App should be accessible at http://localhost:5173/
 
 ## Unit Tests
 
@@ -30,4 +30,4 @@
 ### Run the app tests
 
 - Open a console in the /app sub-directory
-- Execute: `npm test`
+- Execute: `npm run test:unit`
