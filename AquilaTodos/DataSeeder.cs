@@ -10,7 +10,11 @@
         public static void Seed(IServiceProvider serviceProvider)
         {
             using var scope = serviceProvider.CreateScope();
-            var context = scope.ServiceProvider.GetRequiredService<TodoContext>();
+            using var context = scope.ServiceProvider.GetRequiredService<TodoContext>();
+
+            context.Database.OpenConnection();
+            context.Database.EnsureCreated();
+
             if (context.Database.IsRelational())
             {
                 context.Database.Migrate();
