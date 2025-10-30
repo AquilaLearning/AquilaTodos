@@ -19,6 +19,8 @@
             var directory = Directory.GetCurrentDirectory();
             var configPath = Path.Combine(directory, "appsettings.json");
 
+            builder.UseEnvironment("Testing");
+
             builder.ConfigureAppConfiguration((context, config) =>
             {
                 config.AddJsonFile(configPath, false, false);

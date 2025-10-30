@@ -20,7 +20,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-DataSeeder.Seed(app.Services);
+if (app.Environment.EnvironmentName != "Testing")
+{
+    DataSeeder.Seed(app.Services);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
